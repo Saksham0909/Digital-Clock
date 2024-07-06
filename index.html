@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <!-- ------------------------------------------- Styling ------------------------------------------- -->
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-color: rgb(144, 144, 144);
+        }
+
+        .clockBody {
+            margin: auto;
+            margin-top: 250px;
+            height: 350px;
+            width: 1100px;
+            background-color: black;
+            display: flex;
+            justify-content: space-evenly;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 30px;
+            box-shadow: rgb(92, 92, 92) 10px 10px 5px;
+        }
+
+        .hoursWindow {
+            flex-grow: 1;
+            border-radius: 30px;
+        }
+
+        .minutesWindow {
+            flex-grow: 1;
+            border-radius: 30px;
+        }
+
+        .secondsWindow {
+            flex-grow: 1;
+            border-radius: 30px;
+        }
+
+        h1 {
+            font-size: 250px;
+            padding: 35px 0px 0px 15px;
+            color: rgb(255, 94, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ------------------------------------------- Clock Body ------------------------------------------- -->
+    <div class="clockBody">
+
+        <div class="hoursWindow">
+            <h1 id="hoursBox">00</h1>
+        </div>
+
+        <h1>:</h1>
+
+        <div class="minutesWindow">
+            <h1 id="minutesBox">00</h1>
+        </div>
+
+        <h1>:</h1>
+
+        <div class="secondsWindow">
+            <h1 id="secondsBox">00</h1>
+        </div>
+
+    </div>
+
+    <!-- ------------------------------------------- Scripts ------------------------------------------- -->
+    <script>
+        const getTime = () => {
+            let hoursBox = document.getElementById("hoursBox");
+            let minutesBox = document.getElementById("minutesBox");
+            let secondsBox = document.getElementById("secondsBox");
+
+            let currentTime = new Date();
+            let hours = currentTime.getHours();
+            let minutes = currentTime.getMinutes();
+            let seconds = currentTime.getSeconds();
+
+            hours < 10 ? (hoursBox.innerText = "0" + hours) : (hoursBox.innerText = hours);
+            minutes < 10 ? (minutesBox.innerText = "0" + minutes) : (minutesBox.innerText = minutes);
+            seconds < 10 ? (secondsBox.innerText = "0" + seconds) : (secondsBox.innerText = seconds);
+        };
+
+        setInterval(getTime, 1000);
+    </script>
+</body>
+
+</html>
